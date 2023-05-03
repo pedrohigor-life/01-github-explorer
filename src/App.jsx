@@ -1,5 +1,7 @@
+import "./styles/glopbal.css";
+
 import React from "react";
 
 export function App() {
-  return <h1>Hello World One</h1>;
+  return <h1>Hello World</h1>;
 }

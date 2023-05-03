@@ -16,6 +16,10 @@ module.exports = {
     extensions: [".js", ".jsx"],
   },
 
+  devServer: {
+    contentBase: path.resolve(__dirname, "public"),
+  },
+
   plugins: [
     new HtmlWebPackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
@@ -28,6 +32,11 @@ module.exports = {
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: "babel-loader",
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
