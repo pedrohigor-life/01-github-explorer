@@ -1,21 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RepositoryItem } from "./RepositoryItem";
 
-const repository = {
-  name: "unform",
-  description: "Forms in React",
-  link: "https://github.com/pedrohigor-life?tab=repositories",
-};
+import "../styles/repositories.scss";
 
 export function RepositoryList() {
-  const [] = useState();
+  const [repositories, setRepositories] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/orgs/facebook/repos")
+      .then((response) => response.json())
+      .then((data) => {
+        setRepositories(data);
+      });
+  }, []);
 
   return (
-    <section className="repositoryList">
+    <section className="repository-list">
       <h1>Lista de repositórios</h1>
 
       <ul>
-        <RepositoryItem repository={repository} />
+        {repositories.map((repository) => {
+          return <RepositoryItem repository={repository} />;
+        })}
       </ul>
     </section>
   );
