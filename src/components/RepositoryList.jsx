@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { RepositoryItem } from "./RepositoryItem";
 
 const repository = {
@@ -7,6 +8,8 @@ const repository = {
 };
 
 export function RepositoryList() {
+  const [] = useState();
+
   return (
     <section className="repositoryList">
       <h1>Lista de repositórios</h1>
